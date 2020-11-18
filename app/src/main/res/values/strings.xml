@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">AnNotes</string>
+    <string name="activityText">Notes:</string>
+    <string name="notesNameText">Note names:</string>
+    <string name="addNote">Add note</string>
+    <string name="delNote">Delete note</string>
+    <string name="addText">Please enter note text:</string>
+    <string name="addTextName">Please enter note name:</string>
+    <string name="noteText"></string>
+    <string name="confirmBut">Save note</string>
+    <string name="cancelBut">Cancel</string>
+
+
+</resources>
