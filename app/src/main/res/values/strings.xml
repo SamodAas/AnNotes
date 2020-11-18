@@ -9,6 +9,7 @@
     <string name="noteText"></string>
     <string name="confirmBut">Save note</string>
     <string name="cancelBut">Cancel</string>
+    <string name="deleteNoteText">Choose a note which you want to delete by name:</string>
 
 
 </resources>

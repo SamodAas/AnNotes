@@ -19,21 +19,31 @@ public class MainActivity extends AppCompatActivity {
 
     static ArrayList<String> notes = new ArrayList<String>();
     ArrayAdapter<String> arrayAdapterNote;
+    static ArrayList<String> noteNames = new ArrayList<>();
+    ArrayAdapter<String> arrayAdapterNames;
 
     public static String forNotes = "notes";
+    static String forNames = "names";
     static SharedPreferences sharedPref;
+    static SharedPreferences sharedPrefNames;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ListView listView = findViewById(R.id.listOfNotes);
+        ListView listView1 = findViewById(R.id.listOfNoteNames);
+
+        noteNames.clear();
         notes.clear();
 
         arrayAdapterNote = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, notes);
         listView.setAdapter(arrayAdapterNote);
-        sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        arrayAdapterNames = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, noteNames);
+        listView1.setAdapter(arrayAdapterNames);
 
+        sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        sharedPrefNames = PreferenceManager.getDefaultSharedPreferences(this);
     }
     @Override
     protected void onStart() {
@@ -41,9 +51,13 @@ public class MainActivity extends AppCompatActivity {
         if(AddNoteActivity.first){
             String note = sharedPref.getString(forNotes,"NotSet");
             this.notes.add(note);
+
+            String noteName = sharedPrefNames.getString(forNames, "NotSet");
+            this.noteNames.add(noteName);
         }
         this.arrayAdapterNote.notifyDataSetChanged();
-        }
+        this.arrayAdapterNames.notifyDataSetChanged();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -56,10 +70,6 @@ public class MainActivity extends AppCompatActivity {
             case R.id.addNoteOption:
                 Intent i = new Intent(this, AddNoteActivity.class);
                 startActivity(i);
-                return true;
-            case R.id.deleteNoteOption:
-                Intent i1 = new Intent(this, DeleteNote.class);
-                startActivity(i1);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
