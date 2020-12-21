@@ -57,7 +57,6 @@ public class MainActivity extends AppCompatActivity {
         }
         this.arrayAdapterNote.notifyDataSetChanged();
         this.arrayAdapterNames.notifyDataSetChanged();
-        int d = noteNames.size();
     }
 
     @Override
