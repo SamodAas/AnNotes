@@ -17,9 +17,9 @@ import java.util.ResourceBundle;
 
 public class MainActivity extends AppCompatActivity {
 
-    static ArrayList<String> notes = new ArrayList<String>();
+     static ArrayList<String> notes = new ArrayList<String>();
     ArrayAdapter<String> arrayAdapterNote;
-    static ArrayList<String> noteNames = new ArrayList<>();
+    public static ArrayList<String> noteNames = new ArrayList<>();
     ArrayAdapter<String> arrayAdapterNames;
 
     public static String forNotes = "notes";
@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
         }
         this.arrayAdapterNote.notifyDataSetChanged();
         this.arrayAdapterNames.notifyDataSetChanged();
+        int d = noteNames.size();
     }
 
     @Override
@@ -71,6 +72,9 @@ public class MainActivity extends AppCompatActivity {
                 Intent i = new Intent(this, AddNoteActivity.class);
                 startActivity(i);
                 return true;
+            case R.id.deleteNoteOption:
+                Intent i1= new Intent(this, DeleteNote.class);
+                startActivity(i1);
             default:
                 return super.onOptionsItemSelected(item);
         }
