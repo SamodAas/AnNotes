@@ -20,9 +20,9 @@ public class DeleteNote extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.delete_activity);
 
-        ArrayAdapter arrayAdapterDeletion;
         AddNoteActivity.first=false;
 
+        ArrayAdapter arrayAdapterDeletion;
         ListView deleteNameList = findViewById(R.id.listOfNoteNamesDel);
         arrayAdapterDeletion = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, noteNames);
         deleteNameList.setAdapter(arrayAdapterDeletion);
@@ -30,11 +30,14 @@ public class DeleteNote extends AppCompatActivity {
         deleteNameList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                
                 int a=(int)id;
                 noteNames.remove(a);
                 notes.remove(a);
-        arrayAdapterDeletion.notifyDataSetChanged();
-        finish();
+
+                arrayAdapterDeletion.notifyDataSetChanged();
+
+                finish();
             }
         });}
 }
